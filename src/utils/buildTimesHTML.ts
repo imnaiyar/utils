@@ -1,6 +1,6 @@
 import { type ChatInputCommandInteraction } from 'discord.js'
  
- interface Field {
+export interface Field {
    name: string,
    example: string,
    value: string

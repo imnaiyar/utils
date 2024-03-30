@@ -1,3 +1,3 @@
-import { QuizLeaderboardCard } from './QuizLeaderBoardCard';
-export { QuizWinnerCard } from './QuizWinnerCard'
+import { QuizLeaderboardCard } from './QuizLeaderBoardCard.js';
+export { QuizWinnerCard } from './QuizWinnerCard.js'
 export { QuizLeaderboardCard };

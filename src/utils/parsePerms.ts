@@ -1,8 +1,5 @@
-interface Permissions {
-  [key: string]: string;
-}
 
-const permissions: Permissions = {
+const permissions = {
   AddReactions: "Add Reactions",
   Administrator: "Administrator",
   AttachFiles: "Attach Files",
@@ -48,7 +45,6 @@ const permissions: Permissions = {
 
 /**
  * @param {string[]|string} perms
- * @returns
  */
 export const parsePerms = (perms: string | string[]) => {
   if (Array.isArray(perms)) {

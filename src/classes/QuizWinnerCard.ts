@@ -1,6 +1,6 @@
 import { createCanvas, loadImage, SKRSContext2D} from '@napi-rs/canvas';
 import { User, GuildMember, Client } from 'discord.js'
-import { colors, fancyCount } from './utils';
+import { colors, fancyCount } from './utils.js';
 import { join } from "path";
 const size = 100;
 
