@@ -4,7 +4,7 @@ import { type ChatInputCommandInteraction } from 'discord.js'
    name: string,
    example: string,
    value: string
- };
+ }
  
 
 
@@ -214,7 +214,7 @@ export function buildTimesHTML (interaction: ChatInputCommandInteraction, fields
     </body>
 </html>
   `;
-};
+}
 
 function sanitizeField(value:string) {
   // Remove backticks, <, and > characters

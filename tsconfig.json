@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "ESNext",
+        "module": "ESNext",
         "types": ["node"],
-        "module": "es2022",
+        "typeRoots": ["node_modules/@types"],
         "outDir": "dist",
         "rootDir": "./",
         "strict": true, 
@@ -13,6 +14,11 @@
         "inlineSourceMap": true,
         "moduleResolution": "node",
         "sourceRoot": "src",
+        "baseUrl": "./",
+        "paths": {
+          "#root/*": ".",
+          "#fonts/*": "./fonts/"
+        },
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
     },

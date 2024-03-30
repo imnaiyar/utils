@@ -1,11 +1,11 @@
-interface userData {
+export interface userData {
   top: Number,
   avatar: string,
   tag: string,
   score: number,
   games: number
 }
-interface colorsType {
+export interface colorsType {
     box: string,
     username: string,
     score: string,
@@ -13,7 +13,12 @@ interface colorsType {
     secondRank: string,
     thirdRank: string
   }
-interface quizOptions {
+export interface quizOptions {
   usersData: userData[],
   colors: colorsType
+}
+
+export interface Background {
+  type: string;
+  background: string;
 }

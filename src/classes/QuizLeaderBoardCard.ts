@@ -1,18 +1,15 @@
-import { createCanvas, loadImage, GlobalFonts, CanvasRenderingContext2D } from "@napi-rs/canvas";
-import { quizOptions, userData, colorsType } from "../typings";
-import path from "path";
 
-interface Background {
-  type: string;
-  background: string;
-}
+import { createCanvas, loadImage, GlobalFonts, SKRSContext2D } from "@napi-rs/canvas";
+import { quizOptions, userData, colorsType, Background } from "../typings";
+import * as path from "node:path";
+
 
 /**
  * Represents a Quiz Leaderboard Card.
  * @class QuizLeaderboardCard
  * @classdesc A class for generating a leaderboard card for a quiz or game.
  * @method build - Asynchronously builds the leaderboard card and returns the generated image buffer.
- * @returns {Buffer} - The generated image buffer.
+ * @returns - The generated image buffer.
  */
 export class QuizLeaderboardCard {
   private usersData: userData[];
@@ -44,7 +41,6 @@ export class QuizLeaderboardCard {
   /**
    * .setUsersData
    * @param usersData [{ top: int, avatar: "string", tag: "string", score: int}, games: int]
-   * @returns {QuizLeaderboardCard}
    * @example setUsersData([{top:1,avatar:"https://someone-image.png",tag:"fivesobes",score:5, games:8}])
    */
   setUsersData(usersData: userData[]) {
@@ -57,8 +53,7 @@ export class QuizLeaderboardCard {
 
   /**
    * .setScoreMessage
-   * @param {string} message Set Custom Score Message
-   * @returns {QuizLeaderboardCard}
+   * @param  message Set Custom Score Message
    * @example setScoreMessage("Message")
    */
   setScoreMessage(message: string) {
@@ -69,7 +64,6 @@ export class QuizLeaderboardCard {
   /**
    * .setColors
    * @param colors {box: "hexcolor", username: "hexcolor", score: "hexcolor", firstRank: "hexcolor", secondRank: "hexcolor", thirdRank: "hexcolor"}
-   * @returns {QuizLeaderboardCard}
    * @example setColors({ box: '#212121', username: '#ffffff', score: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' })
    */
   setColors(colors: colorsType) {
@@ -79,8 +73,7 @@ export class QuizLeaderboardCard {
 
   /**
    * .setabbreviateNumber
-   * @param {boolean} bool must be "true" or "false"
-   * @returns {QuizLeaderboardCard}
+   * @param bool must be "true" or "false"
    * @example setabbreviateNumber(true)
    */
   setabbreviateNumber(bool: boolean) {
@@ -94,7 +87,6 @@ export class QuizLeaderboardCard {
   /**
    * .setOpacity
    * @param opacity must be between 0 and 1
-   * @returns {QuizLeaderboardCard}
    * @example setOpacity(0.6)
    */
   setOpacity(opacity: number = 0) {
@@ -110,7 +102,6 @@ export class QuizLeaderboardCard {
    * .setBackground
    * @param type "image" or "color"
    * @param value "url" or "hexcolor"
-   * @returns {QuizLeaderboardCard}
    * @example setBackground("image","https://someone-image.png")
    * @example setBackground("color","#000")
    */
@@ -140,11 +131,11 @@ export class QuizLeaderboardCard {
     GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/notosans-kr-black.ttf`), "noto-sans-kr");
 
     const abbreviateNumber = (value: number): string => {
-      let newValue = value;
+      let newValue: string | number = value;
       if (value >= 1000) {
         const suffixes = ["", "K", "M", "B", "T"];
         const suffixNum = Math.floor(("" + value).length / 3);
-        let shortValue = "";
+        let shortValue: number | string = "";
         for (let precision = 2; precision >= 1; precision--) {
           shortValue = parseFloat((suffixNum != 0 ? value / Math.pow(1000, suffixNum) : value).toPrecision(precision));
           const dotLessShortValue = (shortValue + "").replace(/[^a-zA-Z 0-9]+/g, "");
@@ -152,7 +143,7 @@ export class QuizLeaderboardCard {
             break;
           }
         }
-        if (shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
+        if (typeof shortValue === 'number' && shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
         newValue = shortValue + suffixes[suffixNum];
       }
       return newValue.toString();
@@ -161,7 +152,7 @@ export class QuizLeaderboardCard {
     const yuksek = this.usersData.length * 74.5;
 
     const canvas = createCanvas(680, yuksek);
-    const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
+    const ctx: SKRSContext2D = canvas.getContext("2d");
 
     ctx.globalAlpha = 1;
 
@@ -255,13 +246,13 @@ export class QuizLeaderboardCard {
     return canvas.toBuffer("image/png");
   }
 
-  private fillRoundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number | { tl: number; tr: number; br: number; bl: number }, f: boolean, s: boolean): void {
+  private fillRoundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: number, r: number | { tl: number; tr: number; br: number; bl: number }, f: boolean, s: boolean): void {
     if (typeof r === "number") {
       r = { tl: r, tr: r, br: r, bl: r };
     } else {
       const defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
       for (const side in defaultRadius) {
-        r[side] = r[side] || defaultRadius[side];
+        r[side as keyof typeof defaultRadius] = r[side as keyof typeof defaultRadius] || defaultRadius[side as keyof typeof defaultRadius];
       }
     }
     ctx.beginPath();
