@@ -3,7 +3,6 @@ import { createCanvas, loadImage, GlobalFonts, SKRSContext2D } from "@napi-rs/ca
 import { quizOptions, userData, colorsType, Background } from "../typings";
 import * as path from "node:path";
 
-
 /**
  * Represents a Quiz Leaderboard Card.
  * @class QuizLeaderboardCard
@@ -124,11 +123,11 @@ export class QuizLeaderboardCard {
   }
 
   async build(): Promise<Buffer> {
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/circularstd-black.otf`), "circular-std");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/notosans-jp-black.ttf`), "noto-sans-jp");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/notosans-black.ttf`), "noto-sans");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/notoemoji-bold.ttf`), "noto-emoji");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `fonts/notosans-kr-black.ttf`), "noto-sans-kr");
+    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../fonts/circularstd-black.otf`), "circular-std");
+    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../fonts/notosans-jp-black.ttf`), "noto-sans-jp");
+    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../fonts/notosans-black.ttf`), "noto-sans");
+    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../fonts/notoemoji-bold.ttf`), "noto-emoji");
+    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../fonts/notosans-kr-black.ttf`), "noto-sans-kr");
 
     const abbreviateNumber = (value: number): string => {
       let newValue: string | number = value;

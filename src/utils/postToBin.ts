@@ -3,7 +3,7 @@ import { request } from "undici";
 
 /**
  * Posts provided code to hastebin
- * @param {any} code code to post
+ * @param code code to post
  */
 export async function postToHaste(code: any) {
   const req = await request("https://hst.sh/documents/", {

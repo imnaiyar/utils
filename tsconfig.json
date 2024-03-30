@@ -1,32 +1,26 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "types": ["node"],
-        "typeRoots": ["node_modules/@types"],
-        "outDir": "dist",
-        "rootDir": "./",
-        "strict": true, 
-        "checkJs": false,
-        "skipLibCheck": true,
-        "strictNullChecks": true,
-        "noImplicitThis": true,
-        "inlineSourceMap": true,
-        "moduleResolution": "node",
-        "sourceRoot": "src",
-        "baseUrl": "./",
-        "paths": {
-          "#root/*": ".",
-          "#fonts/*": "./fonts/"
-        },
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
-    },
-    "include": [
-        "src"
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "ESNext"
     ],
-    "exclude": [
-        "dist",
-        "node_modules"
-    ]
-} 
+    "module": "ESNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "noImplicitReturns": false,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "paths": {
+      "#lib/*": [
+        "./fonts/*"
+      ]
+    },
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
