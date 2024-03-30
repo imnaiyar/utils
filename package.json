@@ -1,0 +1,30 @@
+{
+  "name": "@skyhelper/utils",
+  "version": "1.0.0",
+  "description": "Utilities for SkyHelper bot",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imnaiyar/skyUtils.git"
+  },
+  "keywords": [
+    "SkyHelperUtils",
+    "Utility"
+  ],
+  "author": "NyR (Naiyar)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imnaiyar/skyUtils/issues"
+  },
+  "homepage": "https://github.com/imnaiyar/skyUtils#readme",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.51",
+    "discord.js": "^14.14.1",
+    "moment-timezone": "^0.5.45",
+    "typescript": "^5.4.3"
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "types": ["node"],
+        "module": "es2022",
+        "outDir": "dist",
+        "rootDir": "./",
+        "strict": true, 
+        "checkJs": false,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "inlineSourceMap": true,
+        "moduleResolution": "node",
+        "sourceRoot": "src",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules"
+    ]
+} 
