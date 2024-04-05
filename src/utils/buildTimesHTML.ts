@@ -10,9 +10,9 @@ export interface Field {
 
  /**
  * Dynamically builds a timestamp sweb page html with the given data
- * @param interaction
- * @param  fieldsData - the data about times
- * @param  offset - offset of the timezone
+ * @param interaction The interaction that intiated this 
+ * @param  fieldsData The data about times
+ * @param  offset Offset of the timezone
  * @param  providedTime
  */
 export function buildTimesHTML (interaction: ChatInputCommandInteraction, fieldsData: Field[], offset:string, providedTime:string) {

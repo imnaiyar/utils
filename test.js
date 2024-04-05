@@ -1,7 +1,3 @@
-import { postToHaste } from '@imnaiyar/utils';
+import sh from './dist/index.js'
 
-// @ts-expect-error
-(async () => {
-  const log = await postToHaste('test');
-  console.log(log);
-});
+console.log(sh.shardsUtil.getSuffix(12))

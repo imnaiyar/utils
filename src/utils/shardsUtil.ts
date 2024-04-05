@@ -1,4 +1,4 @@
-import * as  moment from "moment-timezone";
+import moment from "moment-timezone";
 
 /**
  * Sequence of Shards pattern
@@ -37,10 +37,9 @@ export class shardsUtil {
    * @method getDate - get provided date in moment
    * @param  date - date to get in moment
    */
-  static getDate(date: string) {
+  static getDate(date: string): moment.Moment | string {
     const timezone = "America/Los_Angeles";
-
-    let currentDate;
+    let currentDate: moment.Moment;
     try {
       if (date) {
         currentDate = moment.tz(date, "Y-MM-DD", timezone).startOf("day");
