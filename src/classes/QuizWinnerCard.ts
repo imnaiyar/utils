@@ -24,11 +24,11 @@ export class QuizWinnerCard {
     this.points = wins;
     this.total = total;
   }
-  path(strs: string) {
+  private path(strs: string) {
     return join(__dirname, strs);
   }
 
-  roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number) {
+  private roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number) {
     if (w < 2 * r) r = w / 2;
     if (h < 2 * r) r = h / 2;
     ctx.beginPath();
@@ -41,7 +41,7 @@ export class QuizWinnerCard {
     return ctx;
   }
 
-  changeFontSize(ctx: SKRSContext2D, size: string) {
+  private changeFontSize(ctx: SKRSContext2D, size: string) {
     const fontArgs = ctx.font.split(" ");
     ctx.font = `${size} ${fontArgs.slice(1).join(" ")}`; // / using the last part
     return ctx;
