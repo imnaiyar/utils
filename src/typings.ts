@@ -1,3 +1,5 @@
+import { Client, Collection } from 'discord.js'
+import moment from 'moment-timezone'
 export interface userData {
   top: Number,
   avatar: string,
@@ -21,4 +23,23 @@ export interface quizOptions {
 export interface Background {
   type: string;
   background: string;
+}
+
+export interface SkyEvent {
+  eventActive: Boolean,
+  eventName: string,
+  eventStarts: moment.Moment,
+  eventEnds: moment.Moment,
+  eventDuration: string
+}
+export interface SkyHelper extends Client {
+  ts: {
+      name: string,
+      visitDate: string,
+      departDate: string,
+      value: string,
+      spiritImage: string,
+      index: Number
+  },
+  skyEvents: Collection<string, SkyEvent>
 }

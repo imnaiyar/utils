@@ -1,3 +1,3 @@
-const {shardsUtil} = require('./dist/index.js')
+const {ShardsUtil} = require('./dist/index.js')
 
-console.log(shardsUtil.getDate('2024-09-11'))
+console.log(ShardsUtil.getDate('2024-09-11'))

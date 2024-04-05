@@ -1,20 +1,24 @@
-import { buildTimesHTML, shardsUtil, parsePerms, postToHaste } from './utils/index.js';
-import { QuizLeaderboardCard, QuizWinnerCard } from './classes/index.js'
+import { buildTimesHTML, parsePerms, postToHaste } from './utils/index.js';
+import { QuizLeaderboardCard, QuizWinnerCard, UpdateTS, UpdateEvent, ShardsUtil } from './classes/index.js'
 
 export {
     buildTimesHTML,
-    shardsUtil,
+    ShardsUtil,
     parsePerms,
     postToHaste,
+    UpdateEvent,
     QuizLeaderboardCard,
-    QuizWinnerCard
+    QuizWinnerCard,
+    UpdateTS
 }
 
 export default {
     buildTimesHTML,
-    shardsUtil,
+    ShardsUtil,
     parsePerms,
     postToHaste,
+    UpdateEvent,
     QuizLeaderboardCard,
-    QuizWinnerCard
+    QuizWinnerCard,
+    UpdateTS
 }
