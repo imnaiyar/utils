@@ -123,11 +123,11 @@ export class QuizLeaderboardCard {
   }
 
   async build(): Promise<Buffer> {
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../shared/fonts/circularstd-black.otf`), "circular-std");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../shared/fonts/notosans-jp-black.ttf`), "noto-sans-jp");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../shared/fonts/notosans-black.ttf`), "noto-sans");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../shared/fonts/notoemoji-bold.ttf`), "noto-emoji");
-    GlobalFonts.registerFromPath(path.join(import.meta.dirname, `../../shared/fonts/notosans-kr-black.ttf`), "noto-sans-kr");
+    GlobalFonts.registerFromPath(path.join(__dirname, `../../shared/fonts/circularstd-black.otf`), "circular-std");
+    GlobalFonts.registerFromPath(path.join(__dirname, `../../shared/fonts/notosans-jp-black.ttf`), "noto-sans-jp");
+    GlobalFonts.registerFromPath(path.join(__dirname, `../../shared/fonts/notosans-black.ttf`), "noto-sans");
+    GlobalFonts.registerFromPath(path.join(__dirname, `../../shared/fonts/notoemoji-bold.ttf`), "noto-emoji");
+    GlobalFonts.registerFromPath(path.join(__dirname, `../../shared/fonts/notosans-kr-black.ttf`), "noto-sans-kr");
 
     const abbreviateNumber = (value: number): string => {
       let newValue: string | number = value;

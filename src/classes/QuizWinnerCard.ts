@@ -25,7 +25,7 @@ export class QuizWinnerCard {
     this.total = total;
   }
   path(strs: string) {
-    return join(import.meta.dirname, strs);
+    return join(__dirname, strs);
   }
 
   roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number) {

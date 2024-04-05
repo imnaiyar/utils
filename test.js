@@ -1,3 +1,3 @@
-import sh from './dist/index.js'
+const {shardsUtil} = require('./dist/index.js')
 
-console.log(sh.shardsUtil.getSuffix(12))
+console.log(shardsUtil.getDate('2024-09-11'))

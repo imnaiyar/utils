@@ -5,5 +5,5 @@ This package contains various utilities for SkyHelper discord bot!
 
 Run this to install
 ```
-npm install @skyhelperbot/utils
+npm install skyhelper-utils
 ```

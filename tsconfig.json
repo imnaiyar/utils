@@ -4,11 +4,11 @@
     "lib": [
       "ESNext"
     ],
-    "module": "ESNext",
+    "module": "CommonJS",
     "rootDir": "src",
     "outDir": "dist",
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "esModuleInterop": true,
     "noImplicitReturns": false,
     "experimentalDecorators": true,
     "skipLibCheck": true,

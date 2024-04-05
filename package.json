@@ -1,9 +1,8 @@
 {
-  "name": "@skyhelperbot/utils",
-  "version": "1.1.2",
+  "name": "skyhelper-utils",
+  "version": "1.0.1",
   "description": "Utilities for SkyHelper bot",
   "main": "dist/index.js",
-  "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "tsc && node test.js",
@@ -22,7 +21,8 @@
   "license": "MIT",
   "files": [
     "dist/**/*.js",
-    "dist/**/*.d.ts"
+    "dist/**/*.d.ts",
+    "shared/**/*"
   ],
   "bugs": {
     "url": "https://github.com/imnaiyar/utils/issues"
