@@ -72,8 +72,8 @@ export class ShardsUtil {
   }
 
   /**
-   * returns suffix for a given number
-   * @param number
+   * Returns suffix for a given number
+   * @param number The number to get the suffix for
    */
   static getSuffix(number: number) {
     const suffixes = ["th", "st", "nd", "rd"];

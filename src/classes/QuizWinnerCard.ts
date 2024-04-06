@@ -24,11 +24,11 @@ export class QuizWinnerCard {
     this.points = wins;
     this.total = total;
   }
-  private path(strs: string) {
+  private path(strs: string): string {
     return join(__dirname, strs);
   }
 
-  private roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number) {
+  private roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number): SKRSContext2D {
     if (w < 2 * r) r = w / 2;
     if (h < 2 * r) r = h / 2;
     ctx.beginPath();
@@ -41,12 +41,12 @@ export class QuizWinnerCard {
     return ctx;
   }
 
-  private changeFontSize(ctx: SKRSContext2D, size: string) {
+  private changeFontSize(ctx: SKRSContext2D, size: string): SKRSContext2D {
     const fontArgs = ctx.font.split(" ");
     ctx.font = `${size} ${fontArgs.slice(1).join(" ")}`; // / using the last part
     return ctx;
   }
-  async build() {
+  async build(): Promise<Buffer> {
     const canvas = createCanvas(16 * size, 5 * size);
     const ctx = canvas.getContext("2d");
     const { width: w, height: h } = canvas;
@@ -126,7 +126,7 @@ export class QuizWinnerCard {
     //   ctx.fillText(fancyCount(this.total), w * 0.55 + h * 0.45, h * 0.65 + h * 0.15, h * 0.45);
 
     // Library
-    //
+
     ctx.fillStyle = colors.grey;
     this.roundRect(ctx, w * 0.875, h * 0.6, h * 0.4, h * 0.4, h * 0.15).clip();
     ctx.fill();

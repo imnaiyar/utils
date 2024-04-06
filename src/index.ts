@@ -1,4 +1,4 @@
-import { buildTimesHTML, parsePerms, postToHaste } from './utils/index.js';
+import { buildTimesHTML, parsePerms, postToHaste, recursiveReadDir } from './utils/index.js';
 import { QuizLeaderboardCard, QuizWinnerCard, UpdateTS, UpdateEvent, ShardsUtil } from './classes/index.js'
 
 export {
@@ -9,6 +9,7 @@ export {
     UpdateEvent,
     QuizLeaderboardCard,
     QuizWinnerCard,
+    recursiveReadDir,
     UpdateTS
 }
 
@@ -17,6 +18,7 @@ export default {
     ShardsUtil,
     parsePerms,
     postToHaste,
+    recursiveReadDir,
     UpdateEvent,
     QuizLeaderboardCard,
     QuizWinnerCard,
