@@ -15,7 +15,7 @@ import { readdirSync, lstatSync } from "node:fs";
  * commands.push(command.data.name, command);
  * });
  */
-export function recursiveReadDir(dir: string, skipDirectories: string[] = [], allowedExtensions: string[] = [".js", ".ts"]): string[] {
+export const recursiveReadDir = (dir: string, skipDirectories: string[] = [], allowedExtensions: string[] = [".js", ".ts"]): string[] => {
     const filePaths: string[] = [];
     const readCommands = (direct: string): void => {
         const files = readdirSync(join(process.cwd(), direct));

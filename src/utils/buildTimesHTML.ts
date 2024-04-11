@@ -15,7 +15,7 @@ export interface Field {
  * @param  offset Offset of the timezone
  * @param  providedTime
  */
-export function buildTimesHTML (interaction: ChatInputCommandInteraction, fieldsData: Field[], offset:string, providedTime:string) {
+export const buildTimesHTML = (interaction: ChatInputCommandInteraction, fieldsData: Field[], offset:string, providedTime:string): string => {
   return `
   <!DOCTYPE html>
 

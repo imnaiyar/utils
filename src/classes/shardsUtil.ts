@@ -37,7 +37,7 @@ export class ShardsUtil {
    * @method getDate - get provided date in moment
    * @param  date - date to get in moment
    */
-  static getDate(date: string): moment.Moment | string {
+  static getDate(date?: string): moment.Moment | string {
     const timezone = "America/Los_Angeles";
     let currentDate: moment.Moment;
     try {
@@ -52,8 +52,7 @@ export class ShardsUtil {
         return currentDate;
       }
     } catch (error) {
-      console.log(error);
-      return "error";
+      throw new Error(error);
     }
   }
 

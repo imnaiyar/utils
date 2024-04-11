@@ -1,5 +1,4 @@
-
-const permissions = {
+ const permissions = {
   AddReactions: "Add Reactions",
   Administrator: "Administrator",
   AttachFiles: "Attach Files",
@@ -43,12 +42,12 @@ const permissions = {
   ViewGuildInsights: "View Server Insights",
 } as const;
 
-type Permission = keyof typeof permissions;
+export type Permission = keyof typeof permissions;
 
 /**
  * @param {string[]|string} perms
  */
-export const parsePerms = (perms: Permission | Permission[]) => {
+export const parsePerms = (perms: Permission | Permission[]): string => {
   if (Array.isArray(perms)) {
     return perms.map((perm) => `\`${permissions[perm]}\` `).join(", ");
   } else {

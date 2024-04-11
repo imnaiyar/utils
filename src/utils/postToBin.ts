@@ -5,7 +5,7 @@ import { request } from "undici";
  * Posts provided code to hastebin
  * @param code
  */
-export async function postToHaste(code: any): Promise<string> {
+export const postToHaste= async (code: any): Promise<string> => {
   const req = await request("https://hst.sh/documents/", {
     method: "POST",
     body: typeof code === "object" ? JSON.stringify(code, null, 2) : code,
