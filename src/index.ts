@@ -1,6 +1,6 @@
-import { buildTimesHTML, parsePerms, postToHaste, recursiveReadDir, Permission } from './utils/index.js';
+import { buildTimesHTML, parsePerms, postToHaste, recursiveReadDir } from './utils/index.js';
 import { QuizLeaderboardCard, QuizWinnerCard, UpdateTS, UpdateEvent, ShardsUtil } from './classes/index.js'
-
+import type { Permission } from './utils/parsePerms.d.ts'
 export {
     buildTimesHTML,
     ShardsUtil,
