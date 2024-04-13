@@ -1,6 +1,5 @@
 import { Client, Collection } from 'discord.js'
 import moment from 'moment-timezone'
-export { Permission } from './utils/parsePerms'
 export interface userData {
   top: Number,
   avatar: string,
