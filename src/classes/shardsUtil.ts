@@ -3,7 +3,7 @@ import moment from "moment-timezone";
 /**
  * Sequence of Shards pattern
  */
-const shardSequence: string[] = [
+const shardSequence = [
 'C',
 'b',
 'A',
@@ -16,18 +16,18 @@ const shardSequence: string[] = [
 'b',
 'B',
 'a'
-]
+] as const
 
 /**
  * Sequence of realms pattern of shard
  */
-const realmSequence: string[] = [
+const realmSequence = [
 'prairie',
 'forest',
 'valley',
 'wasteland',
 'vault',
-]
+] as const
 /**
  * @class shardsUtil
  * @classdesc A class to handle shards and realms indexing.
@@ -37,7 +37,7 @@ export class ShardsUtil {
    * @method getDate - get provided date in moment
    * @param  date - date to get in moment
    */
-  static getDate(date?: string): moment.Moment | string {
+  static getDate(date?: string | undefined | null): moment.Moment | string {
     const timezone = "America/Los_Angeles";
     let currentDate: moment.Moment;
     try {
