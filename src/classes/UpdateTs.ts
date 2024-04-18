@@ -1,4 +1,4 @@
-import { SkyHelper } from '../typings'
+import { TSData } from '../typings'
 /**
  * @class
  * @classdesc A class to update traveling spirit details in the client constructor
@@ -6,9 +6,8 @@ import { SkyHelper } from '../typings'
  * @returns {Object}
  */
 export class UpdateTS {
-    private client: SkyHelper;
-    constructor(client: SkyHelper) {
-      this.client = client;
+    constructor(private data: TSData) {
+      this.data = data;
     }
   
     /**
@@ -19,7 +18,7 @@ export class UpdateTS {
       if (!name || typeof name !== "string") {
         throw new TypeError("Name must be a non-empty string.");
       }
-      this.client.ts.name = name;
+      this.data.name = name;
       return this;
     }
   
@@ -31,21 +30,10 @@ export class UpdateTS {
       if (!date || typeof date !== "string") {
         throw new TypeError("Date must be a non-empty string.");
       }
-      this.client.ts.visitDate = date;
+      this.data.visitDate = date;
       return this;
     }
   
-    /**
-     * Sets the depart date of the ts
-     * @param date Depart date. Format: DD-MM-YYYY
-     */
-    setDepart(date:string) {
-      if (!date || typeof date !== "string") {
-        throw new TypeError("Date must be a non-empty string.");
-      }
-      this.client.ts.departDate = date;
-      return this;
-    }
   
     /**
      * Sets the value of the t spirit
@@ -55,7 +43,7 @@ export class UpdateTS {
       if (!value || typeof value !== "string") {
         throw new TypeError("Value must be a non-empty string.");
       }
-      this.client.ts.value = value;
+      this.data.value = value;
       return this;
     }
   
@@ -67,7 +55,7 @@ export class UpdateTS {
       if (!link || typeof link !== "string") {
         throw new TypeError("Link must be a non-empty string.");
       }
-      this.client.ts.spiritImage = link;
+      this.data.spiritImage = link;
       return this;
     }
   
@@ -79,15 +67,15 @@ export class UpdateTS {
       if (!index || typeof index !== "number") {
         throw new TypeError("Index must be a number.");
       }
-      this.client.ts.index = index;
+      this.data.index = index;
       return this;
     }
   
     /**
      * returns the updated ts details
      */
-    update() {
-      return this.client.ts;
+    async update(): Promise<TSData> {
+      return await this.data.save();
     }
   }
   

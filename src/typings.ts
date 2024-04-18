@@ -1,5 +1,6 @@
-import { Client, Collection } from 'discord.js'
-import moment from 'moment-timezone'
+import { Client, Collection } from 'discord.js';
+import moment from 'moment-timezone';
+import { Document } from 'mongoose'
 export interface userData {
   top: Number,
   avatar: string,
@@ -33,13 +34,12 @@ export interface SkyEvent {
   eventDuration: string
 }
 export interface SkyHelper extends Client {
-  ts: {
-      name: string,
-      visitDate: string,
-      departDate: string,
-      value: string,
-      spiritImage: string,
-      index: Number
-  },
   skyEvents: Collection<string, SkyEvent>
+}
+export interface TSData extends Document {
+  name: string;
+  visitDate: string;
+  value: string;
+  spiritImage: string;
+  index: number
 }
