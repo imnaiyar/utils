@@ -33,7 +33,8 @@
     "@napi-rs/canvas": "^0.1.51",
     "discord.js": "^14.14.1",
     "moment-timezone": "^0.5.45",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "undici": "^6.13.0"
   },
   "devDependencies": {
     "mongoose": "^8.3.2",
