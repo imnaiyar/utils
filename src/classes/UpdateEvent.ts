@@ -1,30 +1,17 @@
 import moment from "moment-timezone";
-import { SkyHelper, SkyEvent} from '../typings'
+import { SkyHelper, SkyEvent, EventData} from '../typings'
 
 /**
  * @class
  * @classdesc A class to update Events details in the client constructor
  * @method update Updates the event details
- * @returns {Object}
  */
 
 export class UpdateEvent {
-  
-  private client: SkyHelper;
-  constructor(client: SkyHelper) {
-    this.client = client;
+  constructor(private data: EventData) {
+    this.data = data
   }
 
-  /**
-   * @param boolean Whether the event is active or not
-   */
-  setActive(boolean: Boolean): this {
-    if (boolean === undefined || typeof boolean !== "boolean") {
-      throw new TypeError("Active must be a boolean.");
-    }
-    this.client.skyEvents.set("event", { ...this.client.skyEvents.get("event"), eventActive: boolean });
-    return this;
-  }
 
   /**
    * @param name Name of the event
@@ -33,7 +20,7 @@ export class UpdateEvent {
     if (!name || typeof name !== "string") {
       throw new TypeError("Name must be a non-empty string.");
     }
-    this.client.skyEvents.set("event", { ...this.client.skyEvents.get("event"), eventName: name });
+    this.data.name = name
     return this;
   }
 
@@ -46,9 +33,8 @@ export class UpdateEvent {
     if (!date || typeof date !== "string") {
       throw new TypeError("Date must be a non-empty string.");
     }
-    const mDate = moment.tz(date, "DD-MM-YYYY", "America/Los_Angeles").startOf("day");
-    this.client.skyEvents.set("event", { ...this.client.skyEvents.get("event"), eventStarts: mDate });
-    return this;
+    this.data.startDate = date
+     return this;
   }
 
   /**
@@ -60,26 +46,16 @@ export class UpdateEvent {
     if (!date || typeof date !== "string") {
       throw new TypeError("Date must be a non-empty string.");
     }
-    const mDate = moment.tz(date, "DD-MM-YYYY", "America/Los_Angeles").endOf("day");
-    this.client.skyEvents.set("event", { ...this.client.skyEvents.get("event"), eventEnds: mDate });
+    this.data.endDate = date
     return this;
   }
 
-  /**
-   * @param duration The duration of the Event.
-   */
-  setDuration(duration: number): this {
-    if (!duration || typeof duration !== "number") {
-      throw new TypeError("Duration must be a number.");
-    }
-    this.client.skyEvents.set("event", { ...this.client.skyEvents.get("event"), eventDuration: `${duration}` });
-    return this;
-  }
+
 
   /**
    * @returns The updated event
    */
-  update(): SkyEvent {
-    return this.client.skyEvents.get("event");
+  async update(): Promise<EventData> {
+    return await this.data.save()
   }
 }
