@@ -6,10 +6,7 @@ import { TSData } from '../typings'
  * @returns {Object}
  */
 export class UpdateTS {
-    constructor(private data: TSData) {
-      this.data = data;
-    }
-  
+    constructor(readonly data: TSData) {}
     /**
      * Sets the name of the TS
      * @param name Name of the returning TS

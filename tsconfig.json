@@ -23,19 +23,4 @@
   "exclude": [
     "node_modules"
   ],
-  "typedocOptions": {
-    "entryPoints": ["src/index.ts"],
-    "out": "docs",
-    "plugin": ["typedoc-material-theme", "typedoc-plugin-missing-exports", "typedoc-plugin-mdn-links"],
-    "visibilityFilters": {
-      "protected": false,
-      "inherited": true,
-      "private": false,
-      "external": false,
-      "@alpha": false,
-      "@beta": false
-    },
-    "themeColor": "#6dfdf1",
-    "name": "SkyUtils"
-}
 }

@@ -43,8 +43,13 @@ const config: Config = {
         projectRoot: join(__dirname, "../"),
         packages: ['.'],
         typedocOptions: {
-          entryPoints: ['../src/index.ts'],
           tsconfig: '../tsconfig.json',
+          includeVersion: true,
+          excludePrivate: true,
+          excludeExternals: false,
+          excludeNotDocumented: false,
+          disableSources: false,
+          plugin: ["typedoc-plugin-mdn-links", "typedoc-plugin-missing-exports", "typedoc-plugin-djs-links"]
         },
       },
     ],
@@ -108,9 +113,10 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} [SkyHelper](https://skyhelper.xyz)`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://skyhelper.xyz">SkyHelper</a>`,
     },
     prism: {
+      defaultLanguage: "typescript",
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },

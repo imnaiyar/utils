@@ -8,9 +8,7 @@ import { SkyHelper, SkyEvent, EventData} from '../typings'
  */
 
 export class UpdateEvent {
-  constructor(private data: EventData) {
-    this.data = data
-  }
+  constructor(readonly data: EventData) {}
 
 
   /**
