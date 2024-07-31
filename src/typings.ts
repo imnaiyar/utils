@@ -48,3 +48,23 @@ export interface EventData extends Document {
   endDate: string;
   name: string;
 }
+
+export interface ShardsCountdown {
+  // The shard index
+  index: number;
+
+  // Whether if the shard is ready
+  active?: boolean;
+
+  // Whether if all shards are ended for the given date
+  ended?: boolean;
+
+  // The landing time for the given shard
+  start: moment.Moment;
+
+  // THe end time for the given shard
+  end: moment.Moment;
+
+  // THe countdown for the shard end/land
+  duration: string;
+}

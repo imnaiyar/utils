@@ -1,12 +1,13 @@
 {
   "name": "skyhelper-utils",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Utilities for SkyHelper bot",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "tsc && node test.js",
-    "build": "tsc && echo 'Files compiled'"
+    "build": "tsc && echo 'Files compiled'",
+    "build:docs": "typedoc"
   },
   "repository": {
     "type": "git",
@@ -32,11 +33,13 @@
     "@imnaiyar/utils": "^1.1.2",
     "@napi-rs/canvas": "^0.1.51",
     "discord.js": "^14.14.1",
+    "moment-duration-format": "^2.3.2",
     "moment-timezone": "^0.5.45",
     "typescript": "^5.4.3",
     "undici": "^6.13.0"
   },
   "devDependencies": {
+    "@types/moment-duration-format": "^2.2.6",
     "mongoose": "^8.3.2",
     "typedoc": "^0.25.12",
     "typedoc-material-theme": "^1.0.2",
