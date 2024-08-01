@@ -41,15 +41,14 @@ const config: Config = {
       'docusaurus-plugin-typedoc-api',
       {
         projectRoot: join(__dirname, "../"),
-        packages: ['.'],
+        packages: ["."],
         typedocOptions: {
           tsconfig: '../tsconfig.json',
           includeVersion: true,
           excludePrivate: true,
-          excludeExternals: false,
+          excludeExternals: true,
           excludeNotDocumented: false,
           disableSources: false,
-          plugin: ["typedoc-plugin-mdn-links", "typedoc-plugin-missing-exports", "typedoc-plugin-djs-links"]
         },
       },
     ],

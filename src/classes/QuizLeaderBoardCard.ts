@@ -4,10 +4,7 @@ import { quizOptions, userData, colorsType, Background } from "../typings";
 import * as path from "node:path";
 
 /**
- * Represents a Quiz Leaderboard Card.
- * @class QuizLeaderboardCard
- * @classdesc A class for generating a leaderboard card for a quiz or game.
- * @method build - Asynchronously builds the leaderboard card and returns the generated image buffer.
+ * Represents a Quiz Leaderboard Card. A class for generating a leaderboard card for a quiz or game.
  * @returns - The generated image buffer.
  */
 export class QuizLeaderboardCard {
@@ -39,7 +36,9 @@ export class QuizLeaderboardCard {
 
   /**
    * .setUsersData
-   * @param usersData [{ top: int, avatar: "string", tag: "string", score: int}, games: int]
+   * @param usersData ```js
+   * [{ top: int, avatar: "string", tag: "string", score: int}, games: int]
+   * ```
    * @example setUsersData([{top:1,avatar:"https://someone-image.png",tag:"fivesobes",score:5, games:8}])
    */
   setUsersData(usersData: userData[]) {
@@ -62,8 +61,11 @@ export class QuizLeaderboardCard {
 
   /**
    * .setColors
-   * @param colors {box: "hexcolor", username: "hexcolor", score: "hexcolor", firstRank: "hexcolor", secondRank: "hexcolor", thirdRank: "hexcolor"}
-   * @example setColors({ box: '#212121', username: '#ffffff', score: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' })
+   * @param colors ```json
+   * {box: "hexcolor", username: "hexcolor", score: "hexcolor", firstRank: "hexcolor", secondRank: "hexcolor", thirdRank: "hexcolor"}
+   * ```
+   * @example 
+   * setColors({ box: '#212121', username: '#ffffff', score: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' })
    */
   setColors(colors: colorsType) {
     this.colors = colors;

@@ -1,5 +1,5 @@
 
-### <p align="center"> Utility Package for <a href="https://github.com/imnaiyar/skyhelper">SkyHelper</a> bot.
+### <p align="center"> Utility Package for <a href="https://github.com/imnaiyar/skyhelper">SkyHelper</a> bot.</p>
 
 This package contains various utilities for SkyHelper discord bot!
 

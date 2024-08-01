@@ -13,6 +13,9 @@ export {
     UpdateTS
 }
 export * from "./constants/index.js";
+// Export types for docs
+export type * from "./typings.ts"
+
 export default {
     buildTimesHTML,
     ShardsUtil,

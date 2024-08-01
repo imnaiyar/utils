@@ -6,6 +6,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import CodeBlock from "@theme/CodeBlock"
+import InstallTabs from '../components/InstallButton/InstallTabs';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -15,7 +16,7 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <CodeBlock language='bash'>npm i skyhelper-utils</CodeBlock>
+        <InstallTabs />
       </div>
     </header>
   );
