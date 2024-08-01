@@ -23,8 +23,8 @@
 }
 
 html[data-theme='dark'] .heroBanner {
-	background-color: #29363f;
-  color: white;
+	background-color: #0f0e10;
+  color: rgb(233, 221, 221);
 }
 html[data-theme='light'] .heroBanner {
 	background-color: #ced6db;

@@ -9,13 +9,9 @@ const config: Config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'SkyHelper', // Usually your GitHub org/user name.
-  projectName: 'https://github.com/imnaiyar/utils', // Usually your repo name.
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  favicon: 'https://skyhelper.xyz/assets/img/boticon.png',
+  organizationName: 'SkyHelper',
+  projectName: 'https://github.com/imnaiyar/utils', 
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -65,12 +61,12 @@ const config: Config = {
           {
             tagName: 'link',
             rel: 'icon',
-            href: '/img/docusaurus.png',
+            href: 'https://skyhelper.xyz/assets/img/boticon.png',
           },
           {
             tagName: 'link',
             rel: 'manifest',
-            href: '/manifest.json', // your PWA manifest
+            href: '/manifest.json', 
           },
           {
             tagName: 'meta',
@@ -84,8 +80,7 @@ const config: Config = {
 
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'https://skyhelper.xyz/assets/img/boticon.png',
     navbar: {
       title: 'SkyHelper Utils',
       logo: {
