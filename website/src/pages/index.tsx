@@ -17,7 +17,7 @@ function HomepageHeader() {
         <InstallTabs />
         <br />
         <Heading as='h2' className="hero_title">About <a href='https://skyhelper.xyz'>SkyHelper</a></Heading>
-        <p className='hero__subtitle'>SkyHelper is a versatile Discord bot designed to enhance the <a href='https://thatskygame.com'>Sky: Children of the Light</a> gaming experience. It provides a wide range of useful information to help players navigate the enchanting world of Sky.</p>
+        <p>SkyHelper is a versatile Discord bot designed to enhance the <a href='https://thatskygame.com'>Sky: Children of the Light</a> gaming experience. It provides a wide range of useful information to help players navigate the enchanting world of Sky.</p>
       </div>
     </header>
   );
