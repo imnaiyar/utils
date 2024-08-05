@@ -34,7 +34,7 @@ const config: Config = {
 
   plugins: [
     [
-      'docusaurus-plugin-typedoc-api',
+      '@imnaiyar/typedoc-docusaurus-plugin',
       {
         projectRoot: join(__dirname, "../"),
         packages: ["."],
