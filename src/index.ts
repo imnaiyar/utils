@@ -13,7 +13,7 @@ export {
     recursiveReadDir,
     UpdateTS
 }
-export * from "./constants/index.js";
+export { shardConfig, shardsInfo, shardsTimeline, ShardInfo, ShardsInfo } from "./constants/index.js";
 // Export types for docs
 export type * from "./typings.ts"
 
