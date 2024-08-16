@@ -1,0 +1,47 @@
+name: Create Release
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get previous release tag
+        id: get-previous-tag
+        run: |
+          # Get the most recent tag (previous release)
+          prev_tag=$(git describe --tags --abbrev=0 HEAD^)
+          echo "previous_tag=$prev_tag" >> $GITHUB_ENV
+
+      - name: Generate changelog
+        id: generate-changelog
+        run: |
+          # List PRs merged since the last release
+          changelog=$(git log ${{ env.previous_tag }}..HEAD --merges --pretty=format:"* %s by @%an ([#%h](${{ github.repository }}/pull/%h))")
+          
+          # Filter by conventional commit types (feat, fix, etc.)
+          features=$(echo "$changelog" | grep -i "^* feat")
+          fixes=$(echo "$changelog" | grep -i "^* fix")
+          refactor=$(echo "$changelog" | grep -i "^* refactor")
+          misc=$(echo "$changelog" | grep -iv "^* feat" | grep -iv "^* fix" | grep -iv "^* refactor")
+
+          # Format the changelog for the release
+          release_notes="# Changelog\n\n## Features\n$features\n\n## Bug Fixes\n$fixes"
+
+          # Output the changelog for use in the next step
+          echo "release_notes<<EOF" >> $GITHUB_ENV
+          echo "$release_notes" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ${{ env.release_notes }}
+          draft: false
+          prerelease: false
