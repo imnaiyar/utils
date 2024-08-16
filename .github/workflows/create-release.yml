@@ -1,72 +1,71 @@
 name: Create Release
 
 on:
-  workflow_dispatch:  
+  push:
+    branches:
+      - main
 
 jobs:
-  create-release:
+  create_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 20
-
-      - name: Get previous release tag
-        id: get-previous-tag
+          node-version: 16
+      - name: Install dependencies
+        run: npm install
+      - name: Determine last release tag
+        id: last_release
         run: |
-          # Get the most recent tag, if it exists; fallback to an empty string if no tag exists
-          prev_tag=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
-          echo "previous_tag=$prev_tag" >> $GITHUB_ENV
+          LAST_RELEASE=$(git describe --abbrev=0 --tags)
+          echo "::set-output name=tag::$LAST_RELEASE"
+      - name: Get merged PRs since last release
+        id: get_prs
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const core = require('@actions/core');
+            const github = require('@actions/github');
 
-      - name: Get new version from package.json
-        id: get-new-version
-        run: |
-          # Read version from package.json
-          version=$(jq -r '.version' package.json)
-          echo "new_version=$version" >> $GITHUB_ENV
-          echo "tag_name=v$version" >> $GITHUB_ENV
+            async function run() {
+              try {
+                const octokit = github.getOctokit(core.getInput('GITHUB_TOKEN'));
 
-      - name: Generate changelog
-        id: generate-changelog
-        run: |
-          if [ -z "${{ env.previous_tag }}" ]; then
-            # If there's no previous tag, include all PRs
-            changelog=$(git log --merges --pretty=format:"* %s by @%an ([#%h](https://github.com/${{ github.repository }}/pull/%h))")
-          else
-            # List PRs merged since the last release
-            changelog=$(git log ${{ env.previous_tag }}..HEAD --merges --pretty=format:"* %s by @%an ([#%h](https://github.com/${{ github.repository }}/pull/%h))")
-          fi
-          
-          # Filter by conventional commit types (feat, fix, refactor, etc.)
-          features=$(echo "$changelog" | grep -i "^* feat")
-          fixes=$(echo "$changelog" | grep -i "^* fix")
-          refactors=$(echo "$changelog" | grep -i "^* refactor")
-          misc=$(echo "$changelog" | grep -iv "^* feat" | grep -iv "^* fix" | grep -iv "^* refactor")
+                const { data: lastRelease } = await octokit.rest.repos.getReleaseByTag({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  tag: core.getInput('last_release')
+                });
 
-          # Format the changelog for the release
-          release_notes="# Changelog\n\n## Features\n$features\n\n## Bug Fixes\n$fixes\n\n## Refactors\n$refactors\n\n## Miscellaneous\n$misc"
+                const { data: compare } = await octokit.rest.repos.compareCommits({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  base: lastRelease.tag_name,
+                  head: 'main'
+                });
 
-          # Output the changelog for use in the next step
-          echo "release_notes<<EOF" >> $GITHUB_ENV
-          echo "$release_notes" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+                const prs = compare.commits.map(commit => commit.pull_request);
+                core.setOutput('prs', JSON.stringify(prs));
+              } catch (error) {
+                core.setFailed(error.message);
+              }
+            }
 
-      - name: Create and push the new tag
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag ${{ env.tag_name }}
-          git push origin ${{ env.tag_name }}
-
-      - name: Create GitHub Release
+            run();
+          last_release: ${{ steps.last_release.outputs.tag }}
+      - name: Generate release notes
+        id: generate_notes
+        uses: ./scripts/generate-release.js
+        with:
+          prs: ${{ steps.get_prs.outputs.prs }}
+      - name: Create release
         uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.tag_name }}
-          release_name: ${{ env.tag_name }}
-          body: ${{ env.release_notes }}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.generate_notes.outputs.notes }}
           draft: false
           prerelease: false
