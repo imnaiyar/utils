@@ -7,7 +7,7 @@
  * 
  * @returns The format, or null if format can't be determined
  */
-export function parseDateFormat(dateString: string): string | null {
+export const parseDateFormat =  (dateString: string): string | null => {
     const formats = [
       { regex: /^\d{2}-\d{2}-\d{4}$/, format: 'DD-MM-YYYY' },
       { regex: /^\d{2}\/\d{2}\/\d{4}$/, format: 'DD/MM/YYYY' },
