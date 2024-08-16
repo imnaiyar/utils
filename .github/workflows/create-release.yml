@@ -1,7 +1,7 @@
 name: Create Release
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:  
 
 jobs:
   create-release:
@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
@@ -35,10 +35,10 @@ jobs:
         run: |
           if [ -z "${{ env.previous_tag }}" ]; then
             # If there's no previous tag, include all PRs
-            changelog=$(git log --merges --pretty=format:"* %s by @%an ([#%h](${{ github.repository }}/pull/%h))")
+            changelog=$(git log --merges --pretty=format:"* %s by @%an ([#%h](https://github.com/${{ github.repository }}/pull/%h))")
           else
             # List PRs merged since the last release
-            changelog=$(git log ${{ env.previous_tag }}..HEAD --merges --pretty=format:"* %s by @%an ([#%h](${{ github.repository }}/pull/%h))")
+            changelog=$(git log ${{ env.previous_tag }}..HEAD --merges --pretty=format:"* %s by @%an ([#%h](https://github.com/${{ github.repository }}/pull/%h))")
           fi
           
           # Filter by conventional commit types (feat, fix, refactor, etc.)
