@@ -81,7 +81,7 @@ export const eventData: EventData = {
     displayAllTimes: true,
     interval: getMinutes(2),
   },
-  reset: {
+  "daily-reset": {
     name: "Daily Reset",
     index: 3,
     offset: 0,
