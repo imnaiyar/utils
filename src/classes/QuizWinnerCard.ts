@@ -1,6 +1,6 @@
-import { createCanvas, loadImage, SKRSContext2D} from '@napi-rs/canvas';
-import { User, GuildMember, Client } from 'discord.js'
-import { colors, fancyCount } from './utils.js';
+import { createCanvas, loadImage, SKRSContext2D } from "@napi-rs/canvas";
+import { User, GuildMember, Client } from "discord.js";
+import { colors, fancyCount } from "./utils.js";
 import { join } from "path";
 const size = 100;
 
@@ -10,14 +10,13 @@ export class QuizWinnerCard {
   private thumbnail: string;
   private points: number;
   private total: number;
-  constructor(winner: User | GuildMember, wins: number, total: number , client: Client) {
+  constructor(winner: User | GuildMember, wins: number, total: number, client: Client) {
     if (winner instanceof User) {
-      this.name = winner?.displayName || winner?.globalName || winner?.username
-      this.thumbnail =
-      winner?.displayAvatarURL({ forceStatic: true, extension: "jpg" })
+      this.name = winner?.displayName || winner?.globalName || winner?.username;
+      this.thumbnail = winner?.displayAvatarURL({ forceStatic: true, extension: "jpg" });
     }
     if (winner instanceof GuildMember) {
-      this.name = winner.user?.globalName || winner?.displayName || winner.user.username
+      this.name = winner.user?.globalName || winner?.displayName || winner.user.username;
       this.thumbnail = winner.user?.displayAvatarURL({ forceStatic: true, extension: "jpg" });
     }
     this.client = client;
@@ -28,7 +27,7 @@ export class QuizWinnerCard {
     return join(__dirname, strs);
   }
 
-  private roundRect(ctx: SKRSContext2D, x:number , y: number , w: number , h: number , r: number): SKRSContext2D {
+  private roundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: number, r: number): SKRSContext2D {
     if (w < 2 * r) r = w / 2;
     if (h < 2 * r) r = h / 2;
     ctx.beginPath();
@@ -115,12 +114,7 @@ export class QuizWinnerCard {
     ctx.fillStyle = colors.lightgrey;
     ctx.drawImage(await loadImage(this.path("../../shared/assets/Point.png")), w * 0.3, h * 0.65, w * 0.0625, w * 0.0625);
     this.changeFontSize(ctx, h * 0.15 + "px");
-    ctx.fillText(
-      `${fancyCount(this.points)}/${fancyCount(this.total)} points`,
-      w * 0.25 + h * 0.45,
-      h * 0.65 + h * 0.15,
-      h * 10,
-    );
+    ctx.fillText(`${fancyCount(this.points)}/${fancyCount(this.total)} points`, w * 0.25 + h * 0.45, h * 0.65 + h * 0.15, h * 10);
 
     // ctx.drawImage(await loadImage(this.path('../../shared/assets/vote.svg')), w * 0.6, h * 0.65, w * 0.0625, w * 0.0625);
     //   ctx.fillText(fancyCount(this.total), w * 0.55 + h * 0.45, h * 0.65 + h * 0.15, h * 0.45);

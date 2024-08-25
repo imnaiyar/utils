@@ -1,4 +1,4 @@
- const permissions = {
+const permissions = {
   AddReactions: "Add Reactions",
   Administrator: "Administrator",
   AttachFiles: "Attach Files",

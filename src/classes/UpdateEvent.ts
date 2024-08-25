@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { SkyHelper, SkyEvent, SpecialEventData} from '../typings'
+import { SkyHelper, SkyEvent, SpecialEventData } from "../typings";
 
 /**
  * @class
@@ -10,7 +10,6 @@ import { SkyHelper, SkyEvent, SpecialEventData} from '../typings'
 export class UpdateEvent {
   constructor(readonly data: SpecialEventData) {}
 
-
   /**
    * @param name Name of the event
    */
@@ -18,7 +17,7 @@ export class UpdateEvent {
     if (!name || typeof name !== "string") {
       throw new TypeError("Name must be a non-empty string.");
     }
-    this.data.name = name
+    this.data.name = name;
     return this;
   }
 
@@ -31,8 +30,8 @@ export class UpdateEvent {
     if (!date || typeof date !== "string") {
       throw new TypeError("Date must be a non-empty string.");
     }
-    this.data.startDate = date
-     return this;
+    this.data.startDate = date;
+    return this;
   }
 
   /**
@@ -44,16 +43,14 @@ export class UpdateEvent {
     if (!date || typeof date !== "string") {
       throw new TypeError("Date must be a non-empty string.");
     }
-    this.data.endDate = date
+    this.data.endDate = date;
     return this;
   }
-
-
 
   /**
    * @returns The updated event
    */
   async update(): Promise<SpecialEventData> {
-    return await this.data.save()
+    return await this.data.save();
   }
 }

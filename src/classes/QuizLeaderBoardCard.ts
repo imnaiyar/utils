@@ -1,4 +1,3 @@
-
 import { createCanvas, loadImage, GlobalFonts, SKRSContext2D } from "@napi-rs/canvas";
 import { quizOptions, userData, colorsType, Background } from "../typings";
 import * as path from "node:path";
@@ -64,7 +63,7 @@ export class QuizLeaderboardCard {
    * @param colors ```json
    * {box: "hexcolor", username: "hexcolor", score: "hexcolor", firstRank: "hexcolor", secondRank: "hexcolor", thirdRank: "hexcolor"}
    * ```
-   * @example 
+   * @example
    * setColors({ box: '#212121', username: '#ffffff', score: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' })
    */
   setColors(colors: colorsType) {
@@ -144,7 +143,7 @@ export class QuizLeaderboardCard {
             break;
           }
         }
-        if (typeof shortValue === 'number' && shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
+        if (typeof shortValue === "number" && shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
         newValue = shortValue + suffixes[suffixNum];
       }
       return newValue.toString();
@@ -164,7 +163,9 @@ export class QuizLeaderboardCard {
       try {
         ctx.drawImage(await loadImage(this.background.background), 0, 0, canvas.width, canvas.height);
       } catch {
-        throw new Error("The image given in the second parameter of the setBackground method is not valid or you are not connected to the internet.");
+        throw new Error(
+          "The image given in the second parameter of the setBackground method is not valid or you are not connected to the internet.",
+        );
       }
     }
 
@@ -200,17 +201,11 @@ export class QuizLeaderboardCard {
         ctx.textAlign = "right";
         ctx.fillText(
           `${this.scoreMessage} ${
-            this.abbreviateNumber == true
-              ? `${abbreviateNumber(this.usersData[i].score)}`
-              : `${this.usersData[i].score}`
-          }/${
-            this.abbreviateNumber == true
-              ? `${abbreviateNumber(this.usersData[i].games)}`
-              : `${this.usersData[i].games}`
-          }`,
+            this.abbreviateNumber == true ? `${abbreviateNumber(this.usersData[i].score)}` : `${this.usersData[i].score}`
+          }/${this.abbreviateNumber == true ? `${abbreviateNumber(this.usersData[i].games)}` : `${this.usersData[i].games}`}`,
           560,
           XP_Y,
-          200
+          200,
         );
 
         if (this.usersData[i].top === 1) {
@@ -247,13 +242,23 @@ export class QuizLeaderboardCard {
     return canvas.toBuffer("image/png");
   }
 
-  private fillRoundRect(ctx: SKRSContext2D, x: number, y: number, w: number, h: number, r: number | { tl: number; tr: number; br: number; bl: number }, f: boolean, s: boolean): void {
+  private fillRoundRect(
+    ctx: SKRSContext2D,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    r: number | { tl: number; tr: number; br: number; bl: number },
+    f: boolean,
+    s: boolean,
+  ): void {
     if (typeof r === "number") {
       r = { tl: r, tr: r, br: r, bl: r };
     } else {
       const defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
       for (const side in defaultRadius) {
-        r[side as keyof typeof defaultRadius] = r[side as keyof typeof defaultRadius] || defaultRadius[side as keyof typeof defaultRadius];
+        r[side as keyof typeof defaultRadius] =
+          r[side as keyof typeof defaultRadius] || defaultRadius[side as keyof typeof defaultRadius];
       }
     }
     ctx.beginPath();
