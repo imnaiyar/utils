@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { SkyHelper, SkyEvent, EventData} from '../typings'
+import { SkyHelper, SkyEvent, SpecialEventData} from '../typings'
 
 /**
  * @class
@@ -8,7 +8,7 @@ import { SkyHelper, SkyEvent, EventData} from '../typings'
  */
 
 export class UpdateEvent {
-  constructor(readonly data: EventData) {}
+  constructor(readonly data: SpecialEventData) {}
 
 
   /**
@@ -53,7 +53,7 @@ export class UpdateEvent {
   /**
    * @returns The updated event
    */
-  async update(): Promise<EventData> {
+  async update(): Promise<SpecialEventData> {
     return await this.data.save()
   }
 }

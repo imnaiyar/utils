@@ -30,7 +30,7 @@ export const shardConfig = {
    * @example
    * const info = shardsInfo[currentRealm][currentShard]
    */
-  export default {
+  export const shardsInfo: ShardsInfo = {
     prairie: {
       a: {
         area: "Butterfly Fields, <:r5Prairie:1150596314883690607> Daylight Prairie",
@@ -462,5 +462,5 @@ export const shardConfig = {
         ],
       },
     },
-  } satisfies ShardsInfo;
+  };
   
