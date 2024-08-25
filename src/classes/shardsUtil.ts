@@ -6,31 +6,12 @@ import { shardsTimeline, shardConfig } from "../constants";
 /**
  * Sequence of Shards pattern
  */
-const shardSequence = [
-'C',
-'b',
-'A',
-'a',
-'B',
-'b',
-'C',
-'a',
-'A',
-'b',
-'B',
-'a'
-] as const
+const shardSequence = ["C", "b", "A", "a", "B", "b", "C", "a", "A", "b", "B", "a"] as const;
 
 /**
  * Sequence of realms pattern of shard
  */
-const realmSequence = [
-'prairie',
-'forest',
-'valley',
-'wasteland',
-'vault',
-] as const
+const realmSequence = ["prairie", "forest", "valley", "wasteland", "vault"] as const;
 /**
  * @class shardsUtil
  * @classdesc A class to handle shards and realms indexing.
@@ -94,53 +75,52 @@ export class ShardsUtil {
     ];
   }
 
-
   /**
    * Get all three shards status for a given date relative to the current time
    * @param date The date for which to get the status for
    */
   static getStatus(date: moment.Moment): ShardsCountdown[] | "No Shard" {
-  const timezone = "America/Los_Angeles";
-  const { currentShard } = this.shardsIndex(date);
-  const timings = shardsTimeline(date)[currentShard];
-  const present = moment().tz(timezone);
-  const isNoShard = shardConfig[currentShard].weekdays.includes(date.day());
-  if (isNoShard) return "No Shard";
-  const toReturn: ShardsCountdown[] = [];
-  for (let i = 0; i < timings.length; i++) {
-    const eventTiming = timings[i];
-    // Active
-    if (present.isBetween(eventTiming.start, eventTiming.end)) {
-      toReturn.push({
-        index: i + 1,
-        active: true,
-        start: eventTiming.start,
-        end: eventTiming.end,
-        duration: moment.duration(eventTiming.end.diff(present)).format("d[d] h[h] m[m] s[s]"),
-      });
-      continue;
-      // Yet to fall
-    } else if (present.isBefore(eventTiming.start)) {
-      toReturn.push({
-        index: i + 1,
-        active: false,
-        start: eventTiming.start,
-        end: eventTiming.end,
-        duration: moment.duration(eventTiming.start.diff(present)).format("d[d] h[h] m[m] s[s]"),
-      });
-      continue;
-      // All ended
-    } else if (present.isAfter(eventTiming.end)) {
-      toReturn.push({
-        index: i + 1,
-        ended: true,
-        start: eventTiming.start,
-        end: eventTiming.end,
-        duration: moment.duration(present.diff(eventTiming.end)).format("d[d] h[h] m[m] s[s]"),
-      });
-      continue;
+    const timezone = "America/Los_Angeles";
+    const { currentShard } = this.shardsIndex(date);
+    const timings = shardsTimeline(date)[currentShard];
+    const present = moment().tz(timezone);
+    const isNoShard = shardConfig[currentShard].weekdays.includes(date.day());
+    if (isNoShard) return "No Shard";
+    const toReturn: ShardsCountdown[] = [];
+    for (let i = 0; i < timings.length; i++) {
+      const eventTiming = timings[i];
+      // Active
+      if (present.isBetween(eventTiming.start, eventTiming.end)) {
+        toReturn.push({
+          index: i + 1,
+          active: true,
+          start: eventTiming.start,
+          end: eventTiming.end,
+          duration: moment.duration(eventTiming.end.diff(present)).format("d[d] h[h] m[m] s[s]"),
+        });
+        continue;
+        // Yet to fall
+      } else if (present.isBefore(eventTiming.start)) {
+        toReturn.push({
+          index: i + 1,
+          active: false,
+          start: eventTiming.start,
+          end: eventTiming.end,
+          duration: moment.duration(eventTiming.start.diff(present)).format("d[d] h[h] m[m] s[s]"),
+        });
+        continue;
+        // All ended
+      } else if (present.isAfter(eventTiming.end)) {
+        toReturn.push({
+          index: i + 1,
+          ended: true,
+          start: eventTiming.start,
+          end: eventTiming.end,
+          duration: moment.duration(present.diff(eventTiming.end)).format("d[d] h[h] m[m] s[s]"),
+        });
+        continue;
+      }
     }
+    return toReturn;
   }
-  return toReturn;
-  }
-};
+}

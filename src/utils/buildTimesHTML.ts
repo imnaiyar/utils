@@ -1,21 +1,24 @@
-import { type ChatInputCommandInteraction } from 'discord.js'
- 
+import { type ChatInputCommandInteraction } from "discord.js";
+
 export interface Field {
-   name: string,
-   example: string,
-   value: string
- }
- 
+  name: string;
+  example: string;
+  value: string;
+}
 
-
- /**
+/**
  * Dynamically builds a timestamp sweb page html with the given data
- * @param interaction The interaction that intiated this 
+ * @param interaction The interaction that intiated this
  * @param  fieldsData The data about times
  * @param  offset Offset of the timezone
  * @param  providedTime
  */
-export const buildTimesHTML = (interaction: ChatInputCommandInteraction, fieldsData: Field[], offset:string, providedTime:string): string => {
+export const buildTimesHTML = (
+  interaction: ChatInputCommandInteraction,
+  fieldsData: Field[],
+  offset: string,
+  providedTime: string,
+): string => {
   return `
   <!DOCTYPE html>
 
@@ -214,9 +217,9 @@ export const buildTimesHTML = (interaction: ChatInputCommandInteraction, fieldsD
     </body>
 </html>
   `;
-}
+};
 
-function sanitizeField(value:string) {
+function sanitizeField(value: string) {
   // Remove backticks, <, and > characters
   return value.replace(/`/g, "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
