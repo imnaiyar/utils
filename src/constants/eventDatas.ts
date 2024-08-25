@@ -87,7 +87,7 @@ export const eventData: EventData = {
     offset: 0,
     interval: getMinutes(24),
   },
-  "eden-reset": {
+  eden: {
     name: "Eden/Weekly Reset",
     index: 4,
     offset: 0,
@@ -132,13 +132,6 @@ export const eventData: EventData = {
     displayAllTimes: true,
     interval: getMinutes(4),
     occursOn: { dayOfTheMonth: 1 },
-  },
-  "sanctuary-sunset": {
-    name: "Sanctuary Sunset",
-    index: 10,
-    offset: 50,
-    displayAllTimes: true,
-    interval: getMinutes(2),
   },
   "fairy-ring": {
     name: "Fairy Ring",
