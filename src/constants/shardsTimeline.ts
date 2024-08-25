@@ -7,7 +7,7 @@ import moment from "moment-timezone";
  * const timelines = shardsTimeline(moment())
  * const times = timelines[currentShard]
  */
-export default (currentDate: moment.Moment) => {
+export const shardsTimeline = (currentDate: moment.Moment) => {
   const getTimes = (
     earlySkyHours: number,
     earlySkyMinutes: number,

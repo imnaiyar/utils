@@ -1,6 +1,6 @@
 {
   "name": "skyhelper-utils",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "Utilities for SkyHelper bot",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/imnaiyar/utils#readme",
   "dependencies": {
-    "@imnaiyar/utils": "^1.1.2",
     "@napi-rs/canvas": "^0.1.51",
     "discord.js": "^14.14.1",
     "moment-duration-format": "^2.3.2",
@@ -43,3 +42,4 @@
     "mongoose": "^8.3.2"
   }
 }
+

@@ -43,7 +43,7 @@ export interface TSData extends Document {
   spiritImage: string;
   index: number
 }
-export interface EventData extends Document {
+export interface SpecialEventData extends Document {
   startDate: string;
   endDate: string;
   name: string;
