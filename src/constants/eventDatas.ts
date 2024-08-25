@@ -16,7 +16,9 @@ export interface EventData {
       /** The interval at which the event occurs (in minutes) */
       interval?: number;
   
-      /** Whether to display all their occurrence times in the embed */
+      /** Whether to display all their occurrence times in the embed
+       *  (adds them to select menu which after clicking will show there times) 
+       */
       displayAllTimes?: boolean;
   
       /** The days on which the event occurs */
@@ -60,13 +62,13 @@ export interface EventData {
       displayAllTimes: true,
       interval: getMinutes(2),
     },
-    reset: {
+    "daily-reset": {
       name: "Daily Reset",
       index: 3,
       offset: 0,
       interval: getMinutes(24),
     },
-    "eden-reset": {
+    "eden": {
       name: "Eden/Weekly Reset",
       index: 4,
       offset: 0,
@@ -112,13 +114,6 @@ export interface EventData {
       interval: getMinutes(4),
       occursOn: { dayOfTheMonth: 1 },
     },
-    "sanctuary-sunset": {
-      name: "Sanctuary Sunset",
-      index: 10,
-      offset: 50,
-      displayAllTimes: true,
-      interval: getMinutes(2),
-    },
     "fairy-ring": {
       name: "Fairy Ring",
       index: 11,
@@ -130,6 +125,7 @@ export interface EventData {
       name: "Forest Brook Rainbow",
       index: 12,
       displayAllTimes: true,
+      duration: 30,
       offset: getMinutes(5),
       interval: getMinutes(12),
     },
