@@ -45,7 +45,7 @@ export const eventData: EventData = {
   geyser: {
     name: "Geyser",
     index: 0,
-    duration: 10,
+    duration: 15,
     offset: 0,
     infographic: {
       by: "Clement",
@@ -58,7 +58,7 @@ export const eventData: EventData = {
   grandma: {
     name: "Grandma",
     index: 1,
-    duration: 10,
+    duration: 15,
     offset: 30,
     infographic: {
       by: "Clement",
