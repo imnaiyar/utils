@@ -1,6 +1,6 @@
 {
   "name": "skyhelper-utils",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "description": "Utilities for SkyHelper bot",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
