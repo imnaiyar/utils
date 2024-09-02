@@ -58,6 +58,7 @@ jobs:
           tag_name: ${{ env.new_version }}
           name: v${{ env.new_version }}
           draft: false
+          generate_release_notes: true
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
