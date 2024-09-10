@@ -44,18 +44,6 @@ export class UpdateTS {
   }
 
   /**
-   * Sets the image of the spirit
-   * @param link Link to the spirits image
-   */
-  setImage(link: string) {
-    if (!link || typeof link !== "string") {
-      throw new TypeError("Link must be a non-empty string.");
-    }
-    this.data.spiritImage = link;
-    return this;
-  }
-
-  /**
    * Sets the index of the returning ts
    * @param index The returning index of the TS
    */

@@ -40,7 +40,6 @@ export interface TSData extends Document {
   name: string;
   visitDate: string;
   value: string;
-  spiritImage: string;
   index: number;
 }
 export interface SpecialEventData extends Document {
