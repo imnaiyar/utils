@@ -12,6 +12,7 @@ on:
           - patch
           - minor
           - major
+          - none
 
 jobs:
   build:
@@ -40,6 +41,7 @@ jobs:
 
       - name: Bump version
         id: bump_version
+        if: ${{ github.event.inputs.version_type != 'none' }}
         run: |
           new_version=$(npm version ${{ github.event.inputs.version_type }} -m "chore(release): bump version to %s")
           echo "new_version=${new_version}" >> $GITHUB_ENV
@@ -51,6 +53,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub release
+        if: ${{ github.event.inputs.version_type != 'none' }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.new_version }}
