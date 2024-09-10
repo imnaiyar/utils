@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -28,7 +29,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Build the project
         run: npm run build
 
@@ -36,7 +37,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-         
+
       - name: Bump version
         id: bump_version
         run: |
@@ -59,4 +60,3 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
