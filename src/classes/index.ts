@@ -1,5 +1,5 @@
-export { QuizLeaderboardCard } from "./QuizLeaderBoardCard.js";
-export { QuizWinnerCard } from "./QuizWinnerCard.js";
+export { LeaderboardCard } from "./LeaderBoardCard.js";
+export { LeaderboardWinnerCard } from "./WinnerCard.js";
 export { UpdateTS } from "./UpdateTs.js";
 export { UpdateEvent } from "./UpdateEvent.js";
 export { ShardsUtil } from "./shardsUtil.js";

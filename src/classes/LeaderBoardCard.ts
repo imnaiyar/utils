@@ -1,12 +1,12 @@
 import { createCanvas, loadImage, GlobalFonts, SKRSContext2D } from "@napi-rs/canvas";
-import { quizOptions, userData, colorsType, Background } from "../typings";
+import { userData, colorsType, Background, LeaderboardOptions } from "../typings";
 import * as path from "node:path";
 
 /**
  * Represents a Quiz Leaderboard Card. A class for generating a leaderboard card for a quiz or game.
  * @returns - The generated image buffer.
  */
-export class QuizLeaderboardCard {
+export class LeaderboardCard {
   private usersData: userData[];
   private background: Background;
   private abbreviateNumber: boolean;
@@ -14,7 +14,7 @@ export class QuizLeaderboardCard {
   private scoreMessage: string;
   private colors: colorsType;
 
-  constructor(options: quizOptions) {
+  constructor(options: LeaderboardOptions) {
     this.usersData = options?.usersData || [];
     this.background = {
       type: "none",

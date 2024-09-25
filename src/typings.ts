@@ -2,10 +2,19 @@ import { Client, Collection } from "discord.js";
 import moment from "moment-timezone";
 import { Document } from "mongoose";
 export interface userData {
+  /** The position of the player in the leaderboard */
   top: Number;
+
+  /** The Avatar of the player */
   avatar: string;
+
+  /** The username of the player */
   tag: string;
+
+  /** The score of the player */
   score: number;
+
+  /** Number of the games played by the user */
   games: number;
 }
 export interface colorsType {
@@ -16,9 +25,9 @@ export interface colorsType {
   secondRank: string;
   thirdRank: string;
 }
-export interface quizOptions {
+export interface LeaderboardOptions {
   usersData: userData[];
-  colors: colorsType;
+  colors?: colorsType;
 }
 
 export interface Background {
