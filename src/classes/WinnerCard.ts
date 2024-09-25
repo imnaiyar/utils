@@ -4,7 +4,8 @@ import { colors, fancyCount } from "./utils.js";
 import { join } from "path";
 const size = 100;
 
-export class QuizWinnerCard {
+// TODO: Integrate it with other game types
+export class LeaderboardWinnerCard {
   private name: string;
   private client: Client;
   private thumbnail: string;
