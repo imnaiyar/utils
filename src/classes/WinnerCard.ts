@@ -5,7 +5,7 @@ import { join } from "path";
 const size = 100;
 
 // TODO: Integrate it with other game types
-export class LeaderboardWinnerCard {
+export class GameWinnerCard {
   private name: string;
   private client: Client;
   private thumbnail: string;
