@@ -1,5 +1,5 @@
 export { LeaderboardCard } from "./LeaderBoardCard.js";
-export { LeaderboardWinnerCard } from "./WinnerCard.js";
+export { GameWinnerCard } from "./WinnerCard.js";
 export { UpdateTS } from "./UpdateTs.js";
 export { UpdateEvent } from "./UpdateEvent.js";
 export { ShardsUtil } from "./shardsUtil.js";

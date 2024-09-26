@@ -1,6 +1,8 @@
 import { Client, Collection } from "discord.js";
 import moment from "moment-timezone";
 import { Document } from "mongoose";
+
+/** Data of users provided for making a game leaderboard card */
 export interface userData {
   /** The position of the player in the leaderboard */
   top: Number;
@@ -17,6 +19,8 @@ export interface userData {
   /** Number of the games played by the user */
   games: number;
 }
+
+/** Customize colors for the game Leaderboard Card */
 export interface colorsType {
   box: string;
   username: string;
