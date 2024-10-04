@@ -1,5 +1,14 @@
 import moment from "moment-timezone";
 
+const shardSequence = ["C", "b", "A", "a", "B", "b", "C", "a", "A", "b", "B", "a"] as const;
+type TimelineType = {
+  readonly earlySky: moment.Moment;
+  readonly gateShard: moment.Moment;
+  readonly start: moment.Moment;
+  readonly end: moment.Moment;
+  readonly shardMusic: string;
+};
+export type TimelineReturnType = Record<(typeof shardSequence)[number], [TimelineType, TimelineType, TimelineType]>;
 /**
  * Returns shards fall - end times for a given date
  * @param currentDate The date to get the timeline for
@@ -7,7 +16,7 @@ import moment from "moment-timezone";
  * const timelines = shardsTimeline(moment())
  * const times = timelines[currentShard]
  */
-export const shardsTimeline = (currentDate: moment.Moment) => {
+export const shardsTimeline = (currentDate: moment.Moment): TimelineReturnType => {
   const getTimes = (
     earlySkyHours: number,
     earlySkyMinutes: number,
@@ -20,7 +29,7 @@ export const shardsTimeline = (currentDate: moment.Moment) => {
     shardEndHours: number,
     shardEndMinutes: number,
     shardMusic: string,
-  ) => {
+  ): TimelineType => {
     return {
       earlySky: currentDate
         .clone()

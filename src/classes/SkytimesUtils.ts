@@ -12,7 +12,7 @@ export class SkytimesUtils {
    * @param eventTime The moment date for which to get all occurences
    * @param interval The interval between the event occurence's
    */
-  public static getAllTimes(eventTime: moment.Moment, interval?: number) {
+  public static getAllTimes(eventTime: moment.Moment, interval?: number): string {
     const clonedTime = eventTime.clone();
     const timeBuilt = [];
     while (eventTime.date() === clonedTime.date()) {
@@ -84,7 +84,7 @@ export class SkytimesUtils {
    * Same as {@apilink SkytimesUtils.getEventDetails | getEventDetails} but for all of the events
    * @returns An array of event details
    */
-  public static allEventDetails() {
+  public static allEventDetails(): [EventKey, EventDetails][] {
     const keys = Object.keys(eventData).sort((a, b) => eventData[a].index - eventData[b].index);
     const occurences: [EventKey, EventDetails][] = [];
 

@@ -11,7 +11,7 @@ export class UpdateTS {
    * Sets the name of the TS
    * @param name Name of the returning TS
    */
-  setName(name: string) {
+  setName(name: string): this {
     if (!name || typeof name !== "string") {
       throw new TypeError("Name must be a non-empty string.");
     }
@@ -23,7 +23,7 @@ export class UpdateTS {
    * Sets the visit date of the ts
    * @param date Returnig date. Format: DD-MM-YYYY
    */
-  setVisit(date: string) {
+  setVisit(date: string): this {
     if (!date || typeof date !== "string") {
       throw new TypeError("Date must be a non-empty string.");
     }
@@ -35,7 +35,7 @@ export class UpdateTS {
    * Sets the value of the t spirit
    * @param value The value of the spirit in the spiritsData
    */
-  setValue(value: string) {
+  setValue(value: string): this {
     if (!value || typeof value !== "string") {
       throw new TypeError("Value must be a non-empty string.");
     }
@@ -47,7 +47,7 @@ export class UpdateTS {
    * Sets the index of the returning ts
    * @param index The returning index of the TS
    */
-  setIndex(index: number) {
+  setIndex(index: number): this {
     if (!index || typeof index !== "number") {
       throw new TypeError("Index must be a number.");
     }

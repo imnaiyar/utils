@@ -11,7 +11,7 @@ export const colors = {
   idle: "#dab026",
 };
 
-export function fancyCount(n: number) {
+export function fancyCount(n: number): string {
   if (n > 1000000) return Math.floor(n / 1000000) + "M";
 
   if (n > 1000) {

@@ -40,7 +40,7 @@ export class LeaderboardCard {
    * ```
    * @example setUsersData([{top:1,avatar:"https://someone-image.png",tag:"fivesobes",score:5, games:8}])
    */
-  setUsersData(usersData: userData[]) {
+  setUsersData(usersData: userData[]): this {
     if (usersData.length > 10) {
       throw new Error("setUsersData values cannot be greater than 10.");
     }
@@ -53,7 +53,7 @@ export class LeaderboardCard {
    * @param  message Set Custom Score Message
    * @example setScoreMessage("Message")
    */
-  setScoreMessage(message: string) {
+  setScoreMessage(message: string): this {
     this.scoreMessage = message;
     return this;
   }
@@ -66,7 +66,7 @@ export class LeaderboardCard {
    * @example
    * setColors({ box: '#212121', username: '#ffffff', score: '#ffffff', firstRank: '#f7c716', secondRank: '#9e9e9e', thirdRank: '#94610f' })
    */
-  setColors(colors: colorsType) {
+  setColors(colors: colorsType): this {
     this.colors = colors;
     return this;
   }
@@ -76,7 +76,7 @@ export class LeaderboardCard {
    * @param bool must be "true" or "false"
    * @example setabbreviateNumber(true)
    */
-  setabbreviateNumber(bool: boolean) {
+  setabbreviateNumber(bool: boolean): this {
     if (typeof bool !== "boolean") {
       throw new Error("You must give a abbreviate number true or false argument.");
     }
@@ -89,7 +89,7 @@ export class LeaderboardCard {
    * @param opacity must be between 0 and 1
    * @example setOpacity(0.6)
    */
-  setOpacity(opacity: number = 0) {
+  setOpacity(opacity: number = 0): this {
     if (opacity >= 0 && opacity <= 1) {
       this.opacity = opacity;
       return this;
@@ -105,7 +105,7 @@ export class LeaderboardCard {
    * @example setBackground("image","https://someone-image.png")
    * @example setBackground("color","#000")
    */
-  setBackground(type: string, value: string) {
+  setBackground(type: string, value: string): this {
     if (type === "color") {
       if (/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(value)) {
         this.background.type = "color";

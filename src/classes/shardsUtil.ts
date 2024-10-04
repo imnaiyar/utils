@@ -44,7 +44,10 @@ export class ShardsUtil {
    * Returns shards index for a given date
    * @param date
    */
-  static shardsIndex(date: moment.Moment) {
+  static shardsIndex(date: moment.Moment): {
+    currentShard: (typeof shardSequence)[number];
+    currentRealm: (typeof realmSequence)[number];
+  } {
     const dayOfMonth = date.date();
     const shardIndex = (dayOfMonth - 1) % shardSequence.length;
     const currentShard = shardSequence[shardIndex];
@@ -58,7 +61,7 @@ export class ShardsUtil {
    * Returns suffix for a given number
    * @param number The number to get the suffix for
    */
-  static getSuffix(number: number) {
+  static getSuffix(number: number): string {
     const suffixes = ["th", "st", "nd", "rd"];
     const remainder10 = number % 10;
     const remainder100 = number % 100;
@@ -68,10 +71,10 @@ export class ShardsUtil {
       remainder10 === 1 && remainder100 !== 11
         ? 1
         : remainder10 === 2 && remainder100 !== 12
-          ? 2
-          : remainder10 === 3 && remainder100 !== 13
-            ? 3
-            : 0
+        ? 2
+        : remainder10 === 3 && remainder100 !== 13
+        ? 3
+        : 0
     ];
   }
 
