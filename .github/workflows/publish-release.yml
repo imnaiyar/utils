@@ -43,7 +43,11 @@ jobs:
         id: bump_version
         if: ${{ github.event.inputs.version_type != 'none' }}
         run: |
-          new_version=$(npm version ${{ github.event.inputs.version_type }} -m "chore(release): bump version to %s")
+          raw_version=$(npm version ${{ github.event.inputs.version_type }} -m "chore(release): bump version to %s")
+
+          new_version=${raw_version#v}
+          echo "new_version=${new_version}" >> $GITHUB_ENV
+
           echo "new_version=${new_version}" >> $GITHUB_ENV
 
           # Update the version in jsr.json
@@ -66,8 +70,8 @@ jobs:
         if: ${{ github.event.inputs.version_type != 'none' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.new_version }}
-          name: ${{ env.new_version }}
+          tag_name: v${{ env.new_version }}
+          name: v${{ env.new_version }}
           draft: false
           generate_release_notes: true
           prerelease: false
