@@ -39,18 +39,28 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Bump version
+      - name: Bump version and update jsr.json
         id: bump_version
         if: ${{ github.event.inputs.version_type != 'none' }}
         run: |
           new_version=$(npm version ${{ github.event.inputs.version_type }} -m "chore(release): bump version to %s")
           echo "new_version=${new_version}" >> $GITHUB_ENV
+
+          # Update the version in jsr.json
+          jq ".version = \"${new_version}\"" jsr.json > tmp.json && mv tmp.json jsr.json
+
+          git add package.json package-lock.json jsr.json
+          git commit --amend --no-edit
+
           git push origin HEAD --follow-tags
 
       - name: Publish to NPM
         run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to JSR
+        run: npx jsr publish
 
       - name: Create GitHub release
         if: ${{ github.event.inputs.version_type != 'none' }}
@@ -63,3 +73,4 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

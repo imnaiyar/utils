@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 
 const shardSequence = ["C", "b", "A", "a", "B", "b", "C", "a", "A", "b", "B", "a"] as const;
-type TimelineType = {
+export type TimelineType = {
   readonly earlySky: moment.Moment;
   readonly gateShard: moment.Moment;
   readonly start: moment.Moment;

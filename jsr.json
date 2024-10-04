@@ -3,6 +3,7 @@
   "version": "1.3.1",
   "exports": "./src/index.ts",
   "publish": {
-      "exclude": ["website/"] 
-     }
+    "exclude": ["website/", ".github/"]
+  }
 }
+
