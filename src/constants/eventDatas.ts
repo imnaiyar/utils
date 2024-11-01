@@ -128,7 +128,7 @@ export const eventData: EventData = {
   "fireworks-festival": {
     name: "Fireworks Festival",
     index: 9,
-    offset: 60,
+    offset: 0,
     displayAllTimes: true,
     interval: getMinutes(4),
     occursOn: { dayOfTheMonth: 1 },
