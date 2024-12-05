@@ -100,7 +100,7 @@ export const eventData: EventData = {
     offset: getMinutes(2),
     duration: 50,
     displayAllTimes: true,
-    interval: getMinutes(4),
+    interval: getMinutes(2),
   },
   "dream-skater": {
     name: "Dream Skater",
