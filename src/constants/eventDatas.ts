@@ -97,7 +97,7 @@ export const eventData: EventData = {
   aurora: {
     name: "Aurora's concert",
     index: 5,
-    offset: getMinutes(2),
+    offset: 0,
     duration: 50,
     displayAllTimes: true,
     interval: getMinutes(2),
