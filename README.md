@@ -1,3 +1,6 @@
+> [!NOTE]  
+> This is moved to [SkyHelper](https://github.com/imnaiyar/skyhelper) monorepo
+
 
 ### <p align="center"> Utility Package for <a href="https://github.com/imnaiyar/skyhelper">SkyHelper</a> bot.</p>
 
